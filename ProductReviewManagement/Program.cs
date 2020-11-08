@@ -50,6 +50,11 @@ namespace ProductReviewManagement
 
             // UC 9 Get products with isLike true
             managementOne.GetProductIsLikeTrue();
+            Console.WriteLine("\n\n");
+
+            // UC 10 Get avg rating
+            managementOne.GetAvgRatingOfEachProduct();
+            Console.WriteLine("\n\n");
         }
     }
 }

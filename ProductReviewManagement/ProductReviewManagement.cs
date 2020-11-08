@@ -155,5 +155,22 @@ namespace ProductReviewManagement
                  );
             }
         }
+
+        /// <summary>
+        /// UC 10 Gets the average rating of each product.
+        /// </summary>
+        public void GetAvgRatingOfEachProduct()
+        {
+            var result = from product in table.AsEnumerable()
+                         group product by (product.Field<int>("ProductId")) into g
+                         select new { g.Key, AverageRating = g.Average(x => x.Field<double>("Rating")) };
+
+            foreach (var product in result)
+            {
+                Console.WriteLine($"ProductId : {product.Key} \t " +
+                 $"AverageRating : {product.AverageRating} \t"
+                 );
+            }
+        }
     }
 }
