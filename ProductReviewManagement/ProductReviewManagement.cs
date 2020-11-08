@@ -63,6 +63,8 @@ namespace ProductReviewManagement
                 table.Rows.Add(7, 10, 5, "Good", true);
                 table.Rows.Add(8, 10, 5, "Good", true);
                 table.Rows.Add(9, 3, 4, "Good", true);
+                table.Rows.Add(9, 10, 3, "Average", true);
+                table.Rows.Add(1, 10, 4, "Good", true);
                 table.Rows.Add(10, 2, 2, "Bad", false);
                 table.Rows.Add(11, 3, 3, "Average", true);
                 table.Rows.Add(12, 1, 3, "Average", false);
@@ -190,7 +192,27 @@ namespace ProductReviewManagement
                  $"IsLike : {product.Field<bool>("IsLike")}"
                  );
             }
+        }
 
+        /// <summary>
+        /// UC 12 Gets the records of user id 10.
+        /// </summary>
+        public void GetRecordsOfUserId10()
+        {
+            var result = from product in table.AsEnumerable()
+                         where product.Field<int>("UserId") == 10
+                         orderby product.Field<double>("Rating")
+                         select product;
+
+            foreach (var product in result)
+            {
+                Console.WriteLine($"ProductId : {product.Field<int>("ProductId")} \t " +
+                 $"UserId : {product.Field<int>("UserId")} \t " +
+                 $"Rating : {product.Field<double>("Rating")} \t " +
+                 $"Review : {product.Field<string>("Review")} \t " +
+                 $"IsLike : {product.Field<bool>("IsLike")}"
+                 );
+            }
         }
     }
 }
