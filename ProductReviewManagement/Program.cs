@@ -62,6 +62,11 @@ namespace ProductReviewManagement
             Console.WriteLine(" Get products with review Good");
             managementOne.GetProductsWithReviewNice();
             Console.WriteLine("\n\n");
+
+            // UC UC 12 Gets the records of user id 10
+            Console.WriteLine("UC 12 Gets the records of user id 10");
+            managementOne.GetRecordsOfUserId10();
+            Console.WriteLine("\n\n");
         }
     }
 }
