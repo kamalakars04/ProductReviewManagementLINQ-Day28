@@ -9,6 +9,7 @@ namespace ProductReviewManagement
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     public class ProductReviewManagement
     {
@@ -23,21 +24,30 @@ namespace ProductReviewManagement
             productList = new List<ProductReview>
             {
                 new ProductReview(1, 9, 4, "Good", true),
-            new ProductReview(2, 15, 1, "bad", false),
-            new ProductReview(3, 4, 4, "Good", true),
-            new ProductReview(4, 4, 1, "bad", false),
-            new ProductReview(5, 4, 3, "Average", true),
-            new ProductReview(6, 15, 1, "Average", false),
-            new ProductReview(7, 10, 5, "Good", true),
-            new ProductReview(8, 18, 5, "Good", true),
-            new ProductReview(9, 15, 4, "Good", true),
-            new ProductReview(10, 12, 2, "Bad", false),
-            new ProductReview(11, 21, 3, "Average", true),
-            new ProductReview(12, 11, 3, "Average", false)
+                new ProductReview(2, 15, 1, "bad", false),
+                new ProductReview(3, 4, 4, "Good", true),
+                new ProductReview(4, 4, 1, "bad", false),
+                new ProductReview(5, 4, 3, "Average", true),
+                new ProductReview(6, 15, 1, "Average", false),
+                new ProductReview(7, 10, 5, "Good", true),
+                new ProductReview(8, 18, 5, "Good", true),
+                new ProductReview(9, 15, 4, "Good", true),
+                new ProductReview(10, 12, 2, "Bad", false),
+                new ProductReview(11, 21, 3, "Average", true),
+                new ProductReview(12, 11, 3, "Average", false)
             };
         }
 
-
-
+        /// <summary>
+        /// UC 1 Retrieves the top three rated products.
+        /// </summary>
+        public void RetrieveTopThreeRatedProducts()
+        {
+            var result = (from product in productList
+                          orderby product.Rating descending
+                          select product).Take(3);
+            
+            result.ToList().ForEach(product => product.Display());
+        }
     }
 }
