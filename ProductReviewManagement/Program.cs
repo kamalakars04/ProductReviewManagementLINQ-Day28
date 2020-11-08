@@ -25,6 +25,11 @@ namespace ProductReviewManagement
             management.RetrievewithRatingGreaterThanThree();
             Console.WriteLine("\n\n");
 
+            // UC 4 Gets the count of each product reviews.
+            Console.WriteLine(" Gets the count of each product reviews");
+            management.GetCountOfReviews();
+            Console.WriteLine("\n\n");
+
         }
     }
 }
