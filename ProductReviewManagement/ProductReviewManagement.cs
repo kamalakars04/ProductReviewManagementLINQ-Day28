@@ -49,23 +49,23 @@ namespace ProductReviewManagement
             if(type == "table")
             {
                 table = new DataTable();
-                table.Columns.Add("ProductId");
-                table.Columns.Add("UserId");
-                table.Columns.Add("Rating");
-                table.Columns.Add("Review");
-                table.Columns.Add("IsLike");
-                table.Rows.Add("1", "1", "5", "Good", true);
-                table.Rows.Add("2", "3", 3, "Average", true);
-                table.Rows.Add("3", "4", 4, "Good", true);
-                table.Rows.Add("4", "5", 5, "Good", true);
-                table.Rows.Add("5", "4", 3, "Average", true);
-                table.Rows.Add("6", "5", 1, "Bad", false);
-                table.Rows.Add("7", "10", 5, "Good", true);
-                table.Rows.Add("8", "10", 5, "Good", true);
-                table.Rows.Add("9", "3", 4, "Good", true);
-                table.Rows.Add("10", "2", 2, "Bad", false);
-                table.Rows.Add("11", "3", 3, "Average", true);
-                table.Rows.Add("12", "1", 3, "Average", false);
+                table.Columns.Add("ProductId", typeof(int));
+                table.Columns.Add("UserId", typeof(int));
+                table.Columns.Add("Rating", typeof(double));
+                table.Columns.Add("Review",typeof(string));
+                table.Columns.Add("IsLike", typeof(bool));
+                table.Rows.Add(1, 1, 5, "Good", true);
+                table.Rows.Add(2, 3, 3, "Average", true);
+                table.Rows.Add(3, 4, 4, "Good", true);
+                table.Rows.Add(4, 5, 5, "Good", true);
+                table.Rows.Add(5, 4, 3, "Average", true);
+                table.Rows.Add(6, 5, 1, "Bad", false);
+                table.Rows.Add(7, 10, 5, "Good", true);
+                table.Rows.Add(8, 10, 5, "Good", true);
+                table.Rows.Add(9, 3, 4, "Good", true);
+                table.Rows.Add(10, 2, 2, "Bad", false);
+                table.Rows.Add(11, 3, 3, "Average", true);
+                table.Rows.Add(12, 1, 3, "Average", false);
                 table.Rows.Add(6, 1, 4, "Good", true);
                 table.Rows.Add(1, 2, 5, "Good", true);
                 table.Rows.Add(8, 20, 1, "bad", false);
@@ -135,6 +135,25 @@ namespace ProductReviewManagement
                          select new { product.ProductId, product.Review };
 
             result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t Review : {element.Review}"));
+        }
+
+        /// <summary>
+        /// UC 9 Gets the product is like true.
+        /// </summary>
+        public void GetProductIsLikeTrue()
+        {
+            var result = from product in table.AsEnumerable()
+                         where product.Field<bool>("IsLike") == true
+                         select product;
+            foreach(var product in result)
+            {
+                Console.WriteLine($"ProductId : {product.Field<int>("ProductId")} \t " +
+                 $"UserId : {product.Field<int>("UserId")} \t " +
+                 $"Rating : {product.Field<double>("Rating")} \t " +
+                 $"Review : {product.Field<string>("Review")} \t " +
+                 $"IsLike : {product.Field<bool>("IsLike")}"
+                 );
+            }
         }
     }
 }
