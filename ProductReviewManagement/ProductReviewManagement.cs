@@ -39,7 +39,7 @@ namespace ProductReviewManagement
         }
 
         /// <summary>
-        /// UC 1 Retrieves the top three rated products.
+        /// UC 2 Retrieves the top three rated products.
         /// </summary>
         public void RetrieveTopThreeRatedProducts()
         {
@@ -47,6 +47,19 @@ namespace ProductReviewManagement
                           orderby product.Rating descending
                           select product).Take(3);
             
+            result.ToList().ForEach(product => product.Display());
+        }
+
+        /// <summary>
+        /// UC 3 Retrieve withe the rating greater than three.
+        /// </summary>
+        public void RetrievewithRatingGreaterThanThree()
+        {
+            var result = from product in productList
+                         where product.Rating > 3 && (product.ProductId == 1 || product.ProductId == 4 || product.ProductId == 9)
+                         orderby product.Rating
+                         select product;
+
             result.ToList().ForEach(product => product.Display());
         }
     }
