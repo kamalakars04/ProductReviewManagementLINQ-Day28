@@ -39,6 +39,11 @@ namespace ProductReviewManagement
             Console.WriteLine("Skips the top five");
             management.SkipTopFive();
             Console.WriteLine("\n\n");
+
+            // UC 7 Gets the productid and review.
+            Console.WriteLine("Gets the productid and review");
+            management.GetOnlyProductIdAndReview();
+            Console.WriteLine("\n\n");
         }
     }
 }
