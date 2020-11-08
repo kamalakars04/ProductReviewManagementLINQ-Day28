@@ -10,37 +10,66 @@ namespace ProductReviewManagement
     using System.Collections.Generic;
     using System.Text;
     using System.Linq;
+    using System.Data;
 
     public class ProductReviewManagement
     {
         List<ProductReview> productList;
+        DataTable table;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductReviewManagement"/> class.
         /// UC 1 Adding elements to list
         /// </summary>
-        public ProductReviewManagement()
+        public ProductReviewManagement(string type)
         {
-            productList = new List<ProductReview>
+            if(type == "list")
             {
-                new ProductReview(1, 9, 4, "Good", true),
-                new ProductReview(1, 2, 5, "Good", true),
-                new ProductReview(2, 15, 1, "bad", false),
-                new ProductReview(3, 4, 4, "Good", true),
-                new ProductReview(4, 4, 1, "bad", false),
-                new ProductReview(5, 4, 3, "Average", true),
-                new ProductReview(6, 15, 1, "Average", false),
-                new ProductReview(6, 1, 4, "Good", true),
-                new ProductReview(6, 5, 3, "Average", false),
-                new ProductReview(7, 10, 5, "Good", true),
-                new ProductReview(8, 18, 5, "Good", true),
-                new ProductReview(9, 15, 5, "Good", true),
-                new ProductReview(9, 19, 4, "Good", true),
-                new ProductReview(9, 5, 5, "Good", true),
-                new ProductReview(10, 12, 2, "Bad", false),
-                new ProductReview(11, 21, 3, "Average", true),
-                new ProductReview(12, 11, 3, "Average", false)
-            };
+                productList = new List<ProductReview>
+                {
+                    new ProductReview(1, 9, 4, "Good", true),
+                    new ProductReview(1, 2, 5, "Good", true),
+                    new ProductReview(2, 15, 1, "bad", false),
+                    new ProductReview(3, 4, 4, "Good", true),
+                    new ProductReview(4, 4, 1, "bad", false),
+                    new ProductReview(5, 4, 3, "Average", true),
+                    new ProductReview(6, 15, 1, "Average", false),
+                    new ProductReview(6, 1, 4, "Good", true),
+                    new ProductReview(6, 5, 3, "Average", false),
+                    new ProductReview(7, 10, 5, "Good", true),
+                    new ProductReview(8, 18, 5, "Good", true),
+                    new ProductReview(9, 15, 5, "Good", true),
+                    new ProductReview(9, 19, 4, "Good", true),
+                    new ProductReview(9, 5, 5, "Good", true),
+                    new ProductReview(10, 12, 2, "Bad", false),
+                    new ProductReview(11, 21, 3, "Average", true),
+                    new ProductReview(12, 11, 3, "Average", false)
+                };
+            }
+            if(type == "table")
+            {
+                table = new DataTable();
+                table.Columns.Add("ProductId");
+                table.Columns.Add("UserId");
+                table.Columns.Add("Rating");
+                table.Columns.Add("Review");
+                table.Columns.Add("IsLike");
+                table.Rows.Add("1", "1", "5", "Good", true);
+                table.Rows.Add("2", "3", 3, "Average", true);
+                table.Rows.Add("3", "4", 4, "Good", true);
+                table.Rows.Add("4", "5", 5, "Good", true);
+                table.Rows.Add("5", "4", 3, "Average", true);
+                table.Rows.Add("6", "5", 1, "Bad", false);
+                table.Rows.Add("7", "10", 5, "Good", true);
+                table.Rows.Add("8", "10", 5, "Good", true);
+                table.Rows.Add("9", "3", 4, "Good", true);
+                table.Rows.Add("10", "2", 2, "Bad", false);
+                table.Rows.Add("11", "3", 3, "Average", true);
+                table.Rows.Add("12", "1", 3, "Average", false);
+                table.Rows.Add(6, 1, 4, "Good", true);
+                table.Rows.Add(1, 2, 5, "Good", true);
+                table.Rows.Add(8, 20, 1, "bad", false);
+            }
         }
 
         /// <summary>

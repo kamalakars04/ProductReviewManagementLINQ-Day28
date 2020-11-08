@@ -13,7 +13,7 @@ namespace ProductReviewManagement
         static void Main(string[] args)
         {
             // Uc 1 Adding elements
-            ProductReviewManagement management = new ProductReviewManagement();
+            ProductReviewManagement management = new ProductReviewManagement("list");
 
             // UC 2 Retrieves the top three rated products.
             Console.WriteLine("Retrieves the top three rated products");
@@ -44,6 +44,10 @@ namespace ProductReviewManagement
             Console.WriteLine("Gets the productid and review");
             management.GetOnlyProductIdAndReview();
             Console.WriteLine("\n\n");
+
+            // UC 8 Create DataTable
+            ProductReviewManagement managementOne = new ProductReviewManagement("table");
+
         }
     }
 }
