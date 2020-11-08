@@ -87,5 +87,14 @@ namespace ProductReviewManagement
 
             result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t Review : {element.Review}"));
         }
+
+        /// <summary>
+        /// UC 6 Skips the top five.
+        /// </summary>
+        public void SkipTopFive()
+        {
+            var result = productList.Skip(5);
+            result.ToList().ForEach(product => product.Display());
+        }
     }
 }
