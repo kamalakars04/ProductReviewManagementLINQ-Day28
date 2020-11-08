@@ -13,6 +13,9 @@ namespace ProductReviewManagement
         static void Main(string[] args)
         {
             ProductReviewManagement management = new ProductReviewManagement();
+
+            // UC 1 Retrieves the top three rated products.
+            management.RetrieveTopThreeRatedProducts();
         }
     }
 }
