@@ -96,5 +96,16 @@ namespace ProductReviewManagement
             var result = productList.Skip(5);
             result.ToList().ForEach(product => product.Display());
         }
+
+        /// <summary>
+        /// UC 7 Gets the product identifier and review.
+        /// </summary>
+        public void GetOnlyProductIdAndReview()
+        {
+            var result = from product in productList
+                         select new { product.ProductId, product.Review };
+
+            result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t Review : {element.Review}"));
+        }
     }
 }
