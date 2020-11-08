@@ -48,6 +48,8 @@ namespace ProductReviewManagement
             // UC 8 Create DataTable
             ProductReviewManagement managementOne = new ProductReviewManagement("table");
 
+            // UC 9 Get products with isLike true
+            managementOne.GetProductIsLikeTrue();
         }
     }
 }
