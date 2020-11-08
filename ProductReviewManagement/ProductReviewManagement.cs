@@ -73,8 +73,19 @@ namespace ProductReviewManagement
         /// </summary>
         public void GetCountOfReviews()
         {
-            var result = productList.GroupBy(product => product.ProductId).Select(product =>new { ProductId = product.Key, Count = product.Count() });
-            result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t ReviewCount : {element.Count}"));     
+            var result = productList.GroupBy(product => product.ProductId);
+            result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.Key} \t ReviewCount : {element.Count()}"));     
+        }
+
+        /// <summary>
+        /// UC 5 Gets the product identifier and review.
+        /// </summary>
+        public void GetProductIdAndReview()
+        {
+            var result = from product in productList
+                         select new {product.ProductId , product.Review };
+
+            result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t Review : {element.Review}"));
         }
     }
 }
