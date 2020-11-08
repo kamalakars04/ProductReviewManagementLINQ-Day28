@@ -30,6 +30,10 @@ namespace ProductReviewManagement
             management.GetCountOfReviews();
             Console.WriteLine("\n\n");
 
+            // UC 5 Gets the productid and review.
+            Console.WriteLine("Gets the productid and review");
+            management.GetProductIdAndReview();
+            Console.WriteLine("\n\n");
         }
     }
 }
