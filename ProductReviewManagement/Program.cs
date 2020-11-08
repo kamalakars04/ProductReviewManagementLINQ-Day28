@@ -49,11 +49,18 @@ namespace ProductReviewManagement
             ProductReviewManagement managementOne = new ProductReviewManagement("table");
 
             // UC 9 Get products with isLike true
+            Console.WriteLine("Get products with isLike true");
             managementOne.GetProductIsLikeTrue();
             Console.WriteLine("\n\n");
 
             // UC 10 Get avg rating
+            Console.WriteLine("Get avg rating");
             managementOne.GetAvgRatingOfEachProduct();
+            Console.WriteLine("\n\n");
+
+            // UC 11 Get products with review Good
+            Console.WriteLine(" Get products with review Good");
+            managementOne.GetProductsWithReviewNice();
             Console.WriteLine("\n\n");
         }
     }

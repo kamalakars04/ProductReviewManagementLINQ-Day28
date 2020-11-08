@@ -172,5 +172,25 @@ namespace ProductReviewManagement
                  );
             }
         }
+
+        /// <summary>
+        /// UC 11 Gets the products with review nice.
+        /// </summary>
+        public void GetProductsWithReviewNice()
+        {
+            var result = from product in table.AsEnumerable()
+                         where product.Field<string>("Review") == "Good"
+                         select product;
+            foreach (var product in result)
+            {
+                Console.WriteLine($"ProductId : {product.Field<int>("ProductId")} \t " +
+                 $"UserId : {product.Field<int>("UserId")} \t " +
+                 $"Rating : {product.Field<double>("Rating")} \t " +
+                 $"Review : {product.Field<string>("Review")} \t " +
+                 $"IsLike : {product.Field<bool>("IsLike")}"
+                 );
+            }
+
+        }
     }
 }
