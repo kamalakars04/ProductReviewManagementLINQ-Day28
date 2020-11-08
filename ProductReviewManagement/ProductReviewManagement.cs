@@ -24,14 +24,19 @@ namespace ProductReviewManagement
             productList = new List<ProductReview>
             {
                 new ProductReview(1, 9, 4, "Good", true),
+                new ProductReview(1, 2, 5, "Good", true),
                 new ProductReview(2, 15, 1, "bad", false),
                 new ProductReview(3, 4, 4, "Good", true),
                 new ProductReview(4, 4, 1, "bad", false),
                 new ProductReview(5, 4, 3, "Average", true),
                 new ProductReview(6, 15, 1, "Average", false),
+                new ProductReview(6, 1, 4, "Good", true),
+                new ProductReview(6, 5, 3, "Average", false),
                 new ProductReview(7, 10, 5, "Good", true),
                 new ProductReview(8, 18, 5, "Good", true),
-                new ProductReview(9, 15, 4, "Good", true),
+                new ProductReview(9, 15, 5, "Good", true),
+                new ProductReview(9, 19, 4, "Good", true),
+                new ProductReview(9, 5, 5, "Good", true),
                 new ProductReview(10, 12, 2, "Bad", false),
                 new ProductReview(11, 21, 3, "Average", true),
                 new ProductReview(12, 11, 3, "Average", false)
@@ -61,6 +66,15 @@ namespace ProductReviewManagement
                          select product;
 
             result.ToList().ForEach(product => product.Display());
+        }
+
+        /// <summary>
+        /// UC 4 Gets the count of each product reviews.
+        /// </summary>
+        public void GetCountOfReviews()
+        {
+            var result = productList.GroupBy(product => product.ProductId).Select(product =>new { ProductId = product.Key, Count = product.Count() });
+            result.ToList().ForEach(element => Console.WriteLine($"ProductId : {element.ProductId} \t ReviewCount : {element.Count}"));     
         }
     }
 }
